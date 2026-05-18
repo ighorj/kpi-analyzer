@@ -104,7 +104,7 @@ The generated report has two sheets:
 **Sheet 1 — KPI Summary**
 - One row per analyst
 - Totals row at the bottom
-- Error rate color-coded: 🟢 ≤ 5% / 🔴 > 5%
+- Error rate color-coded: 🟢 ≤ 1% / 🔴 > 1%
 
 **Sheet 2 — Raw Data**
 - Every individual review record for the week
