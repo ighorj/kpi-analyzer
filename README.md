@@ -1,6 +1,6 @@
 # KPI Analyzer
 
-An automated weekly KPI reporting pipeline that connects to a PostgreSQL database, computes analyst performance metrics, and exports a formatted Excel report — hands-free, every Friday at 20:00.
+An automated weekly KPI reporting pipeline that connects to a PostgreSQL database, computes analyst performance metrics, and exports a formatted Excel report — hands-free, every Friday at 20:00 (can be modified)
 
 ---
 
