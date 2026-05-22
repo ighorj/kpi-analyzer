@@ -71,11 +71,11 @@ cp .env.example .env
 
 Edit `.env`:
 ```env
-DB_HOST=localhost
+DB_HOST=db.your-project-ref.supabase.co
 DB_PORT=5432
-DB_NAME=your_database
-DB_USER=your_user
-DB_PASSWORD=your_password
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=your_supabase_db_password
 
 SOURCE_TABLE=reviews
 COL_ANALYST=analyst_name
@@ -117,14 +117,26 @@ KPI_Report_2026-05-11_to_2026-05-15.xlsx
 
 ---
 
-## Cloud SQL (Google Cloud)
+## Supabase
 
-The project is Cloud SQL ready. When migrating from a local database, update `.env`:
+The project is Supabase ready. When migrating from a local database, get your connection details from the Supabase dashboard under **Project Settings → Database → Connection string**, then update `.env`:
 
+**Direct connection** (recommended for cron jobs):
 ```env
-DB_HOST=/cloudsql/your-project:your-region:your-instance  # Unix socket
-# or
-DB_HOST=34.xxx.xxx.xxx  # Public IP
+DB_HOST=db.your-project-ref.supabase.co
+DB_PORT=5432
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=your_supabase_db_password
+```
+
+**Session pooler** (optional, for high-concurrency setups):
+```env
+DB_HOST=aws-0-your-region.pooler.supabase.com
+DB_PORT=5432
+DB_NAME=postgres
+DB_USER=postgres.your-project-ref
+DB_PASSWORD=your_supabase_db_password
 ```
 
 No code changes required.

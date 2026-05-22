@@ -3,14 +3,18 @@ KPI Analyzer — Weekly Report Generator
 Connects to PostgreSQL, pulls the week's data, computes KPIs,
 and exports a formatted Excel file every Friday at 20:00.
 
-CRON (not yet activated):
-    0 20 * * 5  /home/ighor/Coding/.venv/bin/python /home/ighor/Coding/KPIAnalyzer/main.py
 
-Cloud SQL note:
-    When migrating to Cloud SQL, just update the .env values.
-    If using Cloud SQL Proxy (Unix socket):
-        DB_HOST=/cloudsql/project:region:instance
-    Or use the Cloud SQL Python connector (cloud-sql-python-connector package).
+Supabase note:
+    When migrating to Supabase, just update the .env values.
+    Direct connection (recommended for cron jobs):
+        DB_HOST=db.<project-ref>.supabase.co
+        DB_PORT=5432
+        DB_NAME=postgres
+        DB_USER=postgres
+    Session pooler (optional, for high-concurrency setups):
+        DB_HOST=aws-0-<region>.pooler.supabase.com
+        DB_PORT=5432
+        DB_USER=postgres.<project-ref>
 """
 
 import os
@@ -34,7 +38,7 @@ OUTPUT_DIR   = os.path.join(os.path.dirname(__file__), "exports")
 
 
 # ============================================================
-# CONNECTION (SQLAlchemy — Cloud SQL ready)
+# CONNECTION (SQLAlchemy — Supabase ready)
 # ============================================================
 
 def get_engine():
